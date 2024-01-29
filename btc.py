@@ -25,7 +25,7 @@ LINE_NOTIFY_ERROR_TOKEN = os.environ.get("LINE_NOTIFY_ERROR_TOKEN")
 
 # ロジック用変数宣言
 ticker = 'BTC'                         # 取引購入したい銘柄
-currency = 'BUSD'                      # 取引支払に使う銘柄
+currency = 'DAI'                      # 取引支払に使う銘柄
 interval = 60*5                        # チャート足（60*1 は 1分足）。while文を繰り返す間隔を秒数で指定
 duration = 20                          # 移動平均サイズ。何回過去のデータを取得するか。
 trading_amount = 50                    # 一回の購入で取引する金額（ドル）
