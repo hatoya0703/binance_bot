@@ -82,7 +82,7 @@ try:
 
             # 自動売却するためのif文
             # 条件は「最新価格が、ボリンジャーバンドより上振れたか？」かつ「最新価格が、購入時レート（取引履歴のhistoryからget_ex_rateで取得）より高いか？」とき売却する
-            if df['price'].iloc[9] > df['+2sigma'].iloc[-1] \
+            if df['price'].iloc[-1] > df['+2sigma'].iloc[-1] \
                     and get_ex_rate(history) < df['price'].iloc[-1]:
 
                 # 売却するための処理
@@ -91,7 +91,7 @@ try:
                 send_line_notify(message) # LINE Notifyで通知
 
         else: # positionが存在しない(口座残高がない)とき実行
-            if df['price'].iloc[9] < df['-2sigma'].iloc[-1]:
+            if df['price'].iloc[-1] < df['-2sigma'].iloc[-1]:
                 amount = trading_amount / float(ticker_info['lastPrice']) # 購入する数量を、trading_amount( 一回の売買で取引する金額（ドル）)から計算する
                 amount = math.floor(amount * 10 ** 1) / (10 ** 1) # 購入ができる桁数まで切り捨て
 
